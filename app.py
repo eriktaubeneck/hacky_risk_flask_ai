@@ -1,5 +1,8 @@
 import sys
 from flask import Flask
+from risk.models import *
+
+board, card_lookup = models.import_board_data('./risk/board_graph.json')
 
 app = Flask(__name__)
 
