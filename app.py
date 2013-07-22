@@ -5,7 +5,8 @@ from risk.models import *
 import json
 import random
 
-pass_prob = float(os.environ.get('PASS_PROB')) or 0.0
+pass_prob = os.environ.get('PASS_PROB') or 0.0
+pass_prob = float(pass_prob)
 
 app = Flask(__name__)
 
