@@ -1,10 +1,11 @@
 import sys
+import os
 from flask import Flask, request
 from risk.models import *
 import json
 import random
 
-pass_prob = float(sys.argv[2])
+pass_prob = float(os.environ.get('PASS_PROB')) or 0.0
 
 app = Flask(__name__)
 
@@ -106,6 +107,3 @@ def turn():
     print "something broke"
     return ''
 
-if __name__ == '__main__':
-    port = int(sys.argv[1])
-    app.run(debug=True, host="0.0.0.0", port=port)
