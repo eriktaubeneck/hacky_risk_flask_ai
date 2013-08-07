@@ -11,7 +11,7 @@ pass_prob = float(pass_prob)
 app = Flask(__name__)
 
 def unpack_json(r):
-    board = import_board_data('./risk/board_graph.json')
+    board = import_board_data()
     me_data = r['you']
     game = r['game']
     me = Player(me_data['name'])
@@ -48,7 +48,7 @@ def turn():
         unoccupied = [c for c in board.countries.values() if not c.owner]
         country_choice = random.choice(unoccupied)
         response = {"action":"choose_country", "data":country_choice.name}
-        print "choose: %s" % country_choice
+        print "choose: %s" % country_choice.name
         return json.dumps(response)
     elif "deploy_troops" in me.available_actions:
         troops_to_deploy = me.troops_to_deploy
