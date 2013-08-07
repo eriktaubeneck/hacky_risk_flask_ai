@@ -41,8 +41,8 @@ def not_turn():
 
 @app.route('/turn', methods=['POST'])
 def turn():
-    r = json.loads(request.form['risk'])
-    me, players, board = unpack_json(r)
+    r = json.loads(request.data)
+    me, players, board = unpack_json(r['risk'])
     print me.available_actions
     if "choose_country" in me.available_actions:
         unoccupied = [c for c in board.countries.values() if not c.owner]
